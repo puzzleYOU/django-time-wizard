@@ -14,10 +14,9 @@ setup(
     include_package_data=True,
     description='Date and time dependend content manipulation',
     long_description=open('README.rst').read(),
-    url='https://github.com/wfehr/django-time-wizard',
-    download_url='https://github.com/wfehr/django-time-wizard/tarball/master',
-    author='Wolfgang Fehr',
-    author_email='dev@wfehr.de',
+    url='https://github.com/puzzleYOU/django-time-wizard',
+    download_url='https://github.com/puzzleYOU/django-time-wizard/tarball/master',
+    author='puzzleYOU GmbH',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
