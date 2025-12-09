@@ -1,9 +1,6 @@
 {% include "admin/polymorphic/edit_inline/stacked.html" %}
 <script type="text/javascript">
-  if (!$) {
-    var $ = django.jQuery
-  }
-
+(function ($) {
   const countryOptions = {{ countries }}
   const countryProvinceOptions = {{ country_provinces }}
 
@@ -76,14 +73,13 @@
         pSelect.append($('<option value="' + item + '"' + selected + '>' + item + '</option>'))
       })
     }
-    setupHolidayOptions(panel)
   }
 
   var setupHolidayEvents = function (panel) {
-    var changeHoliday = function () {
-      var selectedCountry = $(this).parent().find('.field-country').find('select')[0].value
-      var selectedProvince = $(this).parent().find('.field-province').find('select')[0].value
-      var hItem = $(this).parent().find('.field-holiday')
+    var changeHoliday = function (otherSelect) {
+      var selectedCountry = otherSelect.parent().find('.field-country').find('select')[0].value
+      var selectedProvince = otherSelect.parent().find('.field-province').find('select')[0].value
+      var hItem = otherSelect.parent().find('.field-holiday')
       var hXHR = new XMLHttpRequest()
       hXHR.onreadystatechange = function () {
         if (hXHR.readyState == XMLHttpRequest.DONE) {
@@ -94,8 +90,11 @@
       hXHR.open('GET', hURL)
       hXHR.send()
     }
-    panel.find('.field-country').change(changeHoliday)
-    panel.find('.field-province').change(changeHoliday)
+    panel.find('.field-country').change(function () {
+      setupProvinceOptions($(this).closest('div.inline-related')) // avoid using "empty" template ...
+      changeHoliday($(this))
+    })
+    panel.find('.field-province').change(function() { changeHoliday($(this)) })
   }
 
   var setupEvents = function (panel) {
@@ -109,9 +108,11 @@
       setupSelects($(this))
       setupCountryOptions($(this))
       setupProvinceOptions($(this))
+      setupHolidayOptions($(this))
       setupEvents($(this))
     })
   }
 
   setupTimeWizardHolidayRange()
+})(django.jQuery)
 </script>
