@@ -2,6 +2,11 @@
 Changelog
 =========
 
+v4.2.1 (2025-xx-xx)
+===================
+
+- correctly initialize admin inline-editing
+
 v4.2.0 (2025-06-26)
 ===================
 
