@@ -1,9 +1,10 @@
-import holidays
 from django.shortcuts import render
 from django.utils.timezone import now
 
 
 def load_holidays(request):
+    import holidays
+
     country = request.GET.get('country', '')
     province = request.GET.get('province', '')
     holiday_cls = getattr(holidays, country, False)
