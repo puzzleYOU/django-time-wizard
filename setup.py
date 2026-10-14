@@ -12,7 +12,7 @@ setup(
         'holidays>=0.23',
     ],
     include_package_data=True,
-    description='Date and time dependend content manipulation',
+    description='Date and time dependent content manipulation',
     long_description=open('README.rst').read(),
     url='https://github.com/puzzleYOU/django-time-wizard',
     download_url='https://github.com/puzzleYOU/django-time-wizard/tarball/master',
