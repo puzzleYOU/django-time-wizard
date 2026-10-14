@@ -7,7 +7,8 @@ from polymorphic.admin import (
 )
 
 from time_wizard.conf import (
-    TIME_WIZARD_COUNTRIES, TIME_WIZARD_COUNTRY_PROVINCES,
+    get_time_wizard_countries,
+    get_time_wizard_country_provinces,
 )
 from time_wizard.models import (
     AbsolutePeriodModel, HolidayRangePeriodModel, PeriodModel, TimeWizardModel,
@@ -56,10 +57,10 @@ class TimeWizardModelAdmin(PolymorphicInlineSupportMixin, admin.ModelAdmin):
     def get_extra_selection_context(cls):
         return {
             "countries": mark_safe(
-                json.dumps(TIME_WIZARD_COUNTRIES)
+                json.dumps(get_time_wizard_countries())
             ),
             "country_provinces": mark_safe(
-                json.dumps(TIME_WIZARD_COUNTRY_PROVINCES)
+                json.dumps(get_time_wizard_country_provinces())
             ),
         }
 

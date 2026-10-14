@@ -2,6 +2,16 @@
 Changelog
 =========
 
+v4.2.3 (2026-10-14)
+===================
+
+- import `holidays` module lazily in `conf.py`
+
+v4.2.2 (2026-10-13)
+===================
+
+- import `holidays` module lazily in views & models
+
 v4.2.1 (2025-12-10)
 ===================
 
